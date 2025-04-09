@@ -101,13 +101,13 @@ npm run build [打包前端项目]
 
 #### 2.登录界面
 
-![image-20250409231318435](C:\Users\ZHENG\AppData\Roaming\Typora\typora-user-images\image-20250409231318435.png)
+![image-20250409231318435](README.assets/image-20250409231318435.png)
 
 ### 👨💻 患者端界面
 
 #### 1.个人信息
 
-![image-20250409231329754](C:\Users\ZHENG\AppData\Roaming\Typora\typora-user-images\image-20250409231329754.png)
+![image-20250409231329754](README.assets/image-20250409231329754.png)
 
 #### 2. 挂号预约
 
@@ -118,7 +118,7 @@ npm run build [打包前端项目]
 | 🟢        | 预约成功   | 可取消   |
 | 🟡        | 待医生确认 | 不可操作 |
 
-![image-20250409231345772](C:\Users\ZHENG\AppData\Roaming\Typora\typora-user-images\image-20250409231345772.png)
+![image-20250409231345772](README.assets/image-20250409231345772.png)
 
 #### 3.病历管理
 
@@ -128,17 +128,17 @@ npm run build [打包前端项目]
 - 查看区块链存证状态实时显示（图标：✅ 已填写 / ⏳ 待确认）
 - 支持病历摘要快速检索
 
-![image-20250409231339037](C:\Users\ZHENG\AppData\Roaming\Typora\typora-user-images\image-20250409231339037.png)
+![image-20250409231339037](README.assets/image-20250409231339037.png)
 
 ### 👨⚕️ 医生端界面
 
 #### 1.首页
 
-![image-20250409231403372](C:\Users\ZHENG\AppData\Roaming\Typora\typora-user-images\image-20250409231403372.png)
+![image-20250409231403372](README.assets/image-20250409231403372.png)
 
 #### 2.个人信息
 
-![image-20250409231411954](C:\Users\ZHENG\AppData\Roaming\Typora\typora-user-images\image-20250409231411954.png)
+![image-20250409231411954](README.assets/image-20250409231411954.png)
 
 #### 3. 预约管理
 
@@ -148,7 +148,7 @@ npm run build [打包前端项目]
 2. 查看患者历史就诊记录
 3. 通过数字签名确认审批【暂未实现】
 
-![image-20250409231419257](C:\Users\ZHENG\AppData\Roaming\Typora\typora-user-images\image-20250409231419257.png)
+![image-20250409231419257](README.assets/image-20250409231419257.png)
 
 #### 5. 病历管理
 
@@ -158,7 +158,7 @@ npm run build [打包前端项目]
 - 查看区块链存证状态实时显示（图标：✅ 已填写 / ⏳ 待确认）
 - 支持病历摘要快速检索
 
-![image-20250409231425891](C:\Users\ZHENG\AppData\Roaming\Typora\typora-user-images\image-20250409231425891.png)
+![image-20250409231425891](README.assets/image-20250409231425891.png)
 
 ## 💻 维护者
 
