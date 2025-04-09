@@ -1,0 +1,62 @@
+<invoke name="edit_file">
+<parameter name="target_file">src/view/Patient/Reserveinformation.vue</parameter>
+<parameter name="instructions">更新表单，添加区块链地址格式提示和验证规则绑定。</parameter>
+<parameter name="code_edit">// ... existing code ...
+        <el-dialog v-model="registerDialogVisible" title="挂号挂号预约" width="60%">
+            <el-form :model="formData" :rules="rules" ref="formRef" label-width="120px" class="form-container">
+                <el-card class="form-card" shadow="hover">
+                    <div class="form-row">
+                        <el-form-item label="医院名称：" required prop="hospitalName">
+                            <el-input v-model="formData.hospitalName" placeholder="请输入医院 " class="form-select">
+                            </el-input>
+                        </el-form-item>
+                        <el-form-item label="挂号科室：" required prop="department">
+                            <el-input v-model="formData.department" placeholder="请输入科室" class="form-select">
+                            </el-input>
+                        </el-form-item>
+
+                        <el-form-item label="医生姓名：" required prop="doctorName">
+                            <el-input v-model="formData.doctorName" placeholder="请输入医生姓名" class="form-select">
+                            </el-input>
+                        </el-form-item>
+                    </div>
+
+                    <div class="form-row">
+                        <el-form-item label="医生地址：" required prop="doctor">
+                            <el-input v-model="formData.doctor" placeholder="请输入医生区块链地址" class="form-select">
+                            </el-input>
+                            <div class="form-tip">格式：0x开头的42位十六进制地址</div>
+                        </el-form-item>
+
+                        <el-form-item label="挂号时间：" required prop="createTime">
+                            <el-date-picker v-model="formData.createTime" type="datetime" placeholder="选择日期时间"
+                                class="form-date-picker" :disabled-date="disabledDate" :disabled-time="disabledTime">
+                            </el-date-picker>
+                        </el-form-item>
+                    </div>
+
+                    <div class="form-row">
+                        <el-form-item label="病情描述：" prop="remark">
+                            <el-input v-model="formData.remark" type="textarea" placeholder="请输入病情描述（选填）" :rows="3"
+                                class="form-textarea">
+                            </el-input>
+                        </el-form-item>
+                    </div>
+                </el-card>
+            </el-form>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="registerDialogVisible = false">取消</el-button>
+                    <el-button type="primary" @click="handleRegister">确认挂号</el-button>
+                </span>
+            </template>
+        </el-dialog>
+// ... existing code ...
+</parameter>
+</invoke>
+
+<invoke name="read_file">
+<parameter name="target_file">src/view/Patient/Reserveinformation.vue</parameter>
+<parameter name="offset">100</parameter>
+<parameter name="limit">200</parameter>
+</invoke> 
