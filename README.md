@@ -171,10 +171,8 @@ npm run build [打包前端项目]
   - 完成医患双端基础功能模块
   - 集成FISCO-BCOS存证SDK
 
-## 📄 许可证
-
-本项目采用 [MIT License](https://github.com/zhengcookie/MediTrust-Chain/blob/main/LICENSE)
 
 ## 致谢
 
 - FISCO-BCOS开源社区提供区块链技术支持
+- 若依开源社区提供基础框架支持
