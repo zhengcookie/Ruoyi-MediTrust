@@ -74,7 +74,7 @@
 - JDK 1.8+  
 - Node.js 18+  
 - MySQL 8.0+  Redis
-- FISCO-BCOS节点  
+- FISCO-BCOS节点（[搭建指南](https://fisco-bcos-documentation.readthedocs.io/)）  
 
 ### 后端部署  
 ```bash
