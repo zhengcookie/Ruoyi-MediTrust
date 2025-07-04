@@ -27,7 +27,11 @@
 		</encoder>
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
             <!-- 过滤的级别 -->
+<<<<<<< HEAD
             <level>INFO</level>
+=======
+            <level>TRACE</level>
+>>>>>>> ceece8c (实现多选删除功能)
             <!-- 匹配时的操作：接收（记录） -->
             <onMatch>ACCEPT</onMatch>
             <!-- 不匹配时的操作：拒绝（不记录） -->

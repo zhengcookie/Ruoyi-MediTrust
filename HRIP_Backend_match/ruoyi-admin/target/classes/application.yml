@@ -78,6 +78,11 @@ spring:
     database: 0
     # 密码
     password:
+<<<<<<< HEAD
+=======
+    #    password: 123456
+
+>>>>>>> ceece8c (实现多选删除功能)
     # 连接超时时间:
     timeout: 10s
     lettuce:
@@ -142,6 +147,7 @@ xss:
 
 fisco:
   nodeList: 192.168.132.17:20200
+<<<<<<< HEAD
   groupId: 1
   certPath: ruoyi-admin\src\main\resources\conf
   contractAddress:
@@ -150,4 +156,21 @@ fisco:
   account:
     accountAddress: ruoyi-admin\src\main\resources\account
     accountFilePath: ruoyi-admin\src\main\resources\account\0Admin_key_0xb4f940e971b07ba2182176b6b068ad8aeb59aa42.pem
+=======
+
+#  nodeList: 175.178.241.129:20200
+  groupId: 1
+  certPath: ruoyi-admin/src/main/resources/conf
+#  certPath: /root/HRIP_Backend_match/ruoyi-admin/src/main/resources/conf
+
+  contractAddress:
+    asset: "0x3ce2ef437bd6a06999840ac6533f01dfc5fa728a"
+#    asset: "0xd0eb274fc5bb9f92322cf6c037025dce67e1dfc6"
+
+  account:
+    accountAddress: ruoyi-admin/src/main/resources/account
+    accountFilePath: ruoyi-admin/src/main/resources/account/0Admin_key_0xb4f940e971b07ba2182176b6b068ad8aeb59aa42.pem
+#    accountAddress: /root/HRIP_Backend_match/ruoyi-admin/src/main/resources/account
+#    accountFilePath: /root/HRIP_Backend_match/ruoyi-admin/src/main/resources/account/0Admin_key_0xb4f940e971b07ba2182176b6b068ad8aeb59aa42.pem
+>>>>>>> ceece8c (实现多选删除功能)
 

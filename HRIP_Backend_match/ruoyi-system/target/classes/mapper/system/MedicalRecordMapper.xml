@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
+<<<<<<< HEAD
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.system.mapper.MedicalRecordMapper">
@@ -10,6 +11,17 @@
         <result property="patient" column="patient"/>
         <result property="doctorName" column="doctor_name"/>
         <result property="doctor" column="doctor"/>
+=======
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.MedicalRecordMapper">
+    
+    <resultMap type="com.ruoyi.system.domain.MedicalRecord" id="MedicalRecordResult">
+        <id property="id" column="id"/>
+        <result property="patientName" column="patient_name"/>
+
+        <result property="doctorName" column="doctor_name"/>
+>>>>>>> ceece8c (实现多选删除功能)
         <result property="hospitalName" column="hospital_name"/>
         <result property="department" column="department"/>
         <result property="registrationInfo" column="registration_info"/>
@@ -17,6 +29,7 @@
         <result property="currentMedicalHistory" column="current_medical_history"/>
         <result property="createdAt" column="created_at"/>
     </resultMap>
+<<<<<<< HEAD
 
     <sql id="selectMedicalRecordVo">
         select id, patient_name, patient, doctor_name, doctor, hospital_name, department, registration_info, past_medical_history, current_medical_history, created_at
@@ -64,10 +77,97 @@
 
     <delete id="deleteMedicalRecordByIds" parameterType="Long">
         delete from medical_records where id in
+=======
+    
+    <sql id="selectMedicalRecordVo">
+        select id, patient_name,  doctor_name, hospital_name, department,
+               registration_info, past_medical_history, current_medical_history, created_at
+        from medical_record
+    </sql>
+    
+    <select id="selectMedicalRecordList" parameterType="com.ruoyi.system.domain.MedicalRecord" resultMap="MedicalRecordResult">
+        <include refid="selectMedicalRecordVo"/>
+        <where>
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+            <if test="patientName != null and patientName != ''">
+                AND patient_name like concat('%', #{patientName}, '%')
+            </if>
+
+            <if test="doctorName != null and doctorName != ''">
+                AND doctor_name like concat('%', #{doctorName}, '%')
+            </if>
+            <if test="hospitalName != null and hospitalName != ''">
+                AND hospital_name like concat('%', #{hospitalName}, '%')
+            </if>
+            <if test="department != null and department != ''">
+                AND department = #{department}
+            </if>
+        </where>
+    </select>
+    
+    <select id="selectMedicalRecordById" parameterType="Integer" resultMap="MedicalRecordResult">
+        <include refid="selectMedicalRecordVo"/>
+        where id = #{id}
+    </select>
+    
+    <select id="selectMedicalRecordByPatientName" parameterType="String" resultMap="MedicalRecordResult">
+        <include refid="selectMedicalRecordVo"/>
+        where patient_name = #{patientName}
+    </select>
+    
+    <select id="selectMedicalRecordByDoctorName" parameterType="String" resultMap="MedicalRecordResult">
+        <include refid="selectMedicalRecordVo"/>
+        where doctor_name = #{doctorName}
+    </select>
+    
+    <insert id="insertMedicalRecord" parameterType="com.ruoyi.system.domain.MedicalRecord" useGeneratedKeys="true" keyProperty="id">
+        insert into medical_record (
+            patient_name,
+            doctor_name,
+            hospital_name,
+            department,
+            registration_info,
+            past_medical_history,
+            current_medical_history,
+            created_at
+        ) values (
+            #{patientName},
+            #{doctorName},
+            #{hospitalName},
+            #{department},
+            #{registrationInfo},
+            #{pastMedicalHistory},
+            #{currentMedicalHistory},
+            sysdate()
+        )
+    </insert>
+    
+    <update id="updateMedicalRecord" parameterType="com.ruoyi.system.domain.MedicalRecord">
+        update medical_record
+        <set>
+            <if test="hospitalName != null and hospitalName != ''">hospital_name = #{hospitalName},</if>
+            <if test="department != null and department != ''">department = #{department},</if>
+            <if test="registrationInfo != null">registration_info = #{registrationInfo},</if>
+            <if test="pastMedicalHistory != null">past_medical_history = #{pastMedicalHistory},</if>
+            <if test="currentMedicalHistory != null">current_medical_history = #{currentMedicalHistory}</if>
+        </set>
+        where id = #{id}
+    </update>
+    
+    <delete id="deleteMedicalRecordById" parameterType="Integer">
+        delete from medical_record where id = #{id}
+    </delete>
+    
+    <delete id="deleteMedicalRecordByIds" parameterType="Integer">
+        delete from medical_record where id in
+>>>>>>> ceece8c (实现多选删除功能)
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>
     </delete>
+<<<<<<< HEAD
 
     <insert id="insertMedicalRecord" parameterType="com.ruoyi.system.domain.MedicalRecord">
         insert into medical_records (
@@ -113,3 +213,7 @@
     </update>
 
 </mapper>
+=======
+    
+</mapper>
+>>>>>>> ceece8c (实现多选删除功能)

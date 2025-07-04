@@ -4,6 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.system.mapper.InfoMapper">
 
+<<<<<<< HEAD
     <resultMap type="com.ruoyi.system.domain.Info" id="UserResult">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
@@ -17,6 +18,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <sql id="selectUserVo">
         select id, name, gender, age, user_type, address, password
         from users
+=======
+    <resultMap type="com.ruoyi.system.domain.Info" id="InfoResult">
+        <id     property="id"            column="id"            />
+        <result property="name"          column="name"          />
+        <result property="gender"        column="gender"        />
+        <result property="age"           column="age"           />
+        <result property="userType"      column="user_type"     />
+        <result property="password"      column="password"      />
+        <result property="email"         column="email"         />
+        <result property="avatar"       column="avatar"       />
+
+    </resultMap>
+
+    <sql id="selectInfoVo">
+        select id, name, gender, age, user_type, password, email, avatar
+        from info
+>>>>>>> ceece8c (实现多选删除功能)
     </sql>
 
     <!-- 查询条件 -->
@@ -28,6 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="name != null and name != ''">
                 and name like concat('%', #{name}, '%')
             </if>
+<<<<<<< HEAD
             <if test="gender != null and gender != ''">
                 and gender = #{gender}
             </if>
@@ -77,23 +96,79 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <update id="updateUser" parameterType="com.ruoyi.system.domain.Info">
         update users
+=======
+            <if test="userType != null">
+                and user_type = #{userType}
+            </if>
+        </where>
+    </sql>
+
+    <select id="selectInfo" parameterType="com.ruoyi.system.domain.Info" resultMap="InfoResult">
+        <include refid="selectInfoVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+
+    <select id="selectInfoList" parameterType="com.ruoyi.system.domain.Info" resultMap="InfoResult">
+        <include refid="selectInfoVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+
+    <select id="selectInfoById" parameterType="Long" resultMap="InfoResult">
+        <include refid="selectInfoVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertInfo" parameterType="com.ruoyi.system.domain.Info">
+        insert into info (
+            name, gender, age, user_type, password, email
+        ) values (
+            #{name}, #{gender}, #{age}, #{userType}, #{password}, #{email}
+        )
+    </insert>
+
+    <update id="updateInfoAvatar" parameterType="com.ruoyi.system.domain.Info">
+        update info
+        <set>
+            <if test="avatar != null and avatar != ''">avatar = #{avatar}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <update id="updateInfo" parameterType="com.ruoyi.system.domain.Info">
+        update info 
+>>>>>>> ceece8c (实现多选删除功能)
         <set>
             <if test="name != null and name != ''">name = #{name},</if>
             <if test="gender != null and gender != ''">gender = #{gender},</if>
             <if test="age != null">age = #{age},</if>
             <if test="userType != null">user_type = #{userType},</if>
+<<<<<<< HEAD
             <if test="address != null and address != ''">address = #{address},</if>
             <if test="password != null">password = #{password}</if>
+=======
+            <if test="password != null and password != ''">password = #{password},</if>
+            <if test="email != null and email != ''">email = #{email},</if>
+            <if test="avatar != null and avatar != ''">avatar = #{avatar}</if>
+>>>>>>> ceece8c (实现多选删除功能)
         </set>
         where id = #{id}
     </update>
 
+<<<<<<< HEAD
     <delete id="deleteUserById" parameterType="Long">
         delete from users where id = #{id}
     </delete>
 
     <delete id="deleteUserByIds" parameterType="Long">
         delete from users where id in
+=======
+    <delete id="deleteInfoById" parameterType="Long">
+        delete from info where id = #{id}
+    </delete>
+
+    <delete id="deleteInfoByIds" parameterType="Long">
+        delete from info where id in 
+>>>>>>> ceece8c (实现多选删除功能)
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

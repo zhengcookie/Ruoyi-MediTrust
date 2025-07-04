@@ -111,7 +111,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
                 // 过滤请求
                 .authorizeRequests()
                 // 对于登录login 注册register 验证码captchaImage 允许匿名访问,开发的时候最好设置都可以访问
+<<<<<<< HEAD
                 .antMatchers("/login","/index/*", "/createPatient", "/captchaImage","/block/*","/*","/blockchainInfo","/system/*").permitAll()
+=======
+                .antMatchers("/login","/index/*", "/createPatient", "/captchaImage","/block/*","/*","/blockchainInfo","/system/*","*","/prod-api").permitAll()
+>>>>>>> ceece8c (实现多选删除功能)
                 // 静态资源，可匿名访问
                 .antMatchers(HttpMethod.GET, "/", "/*.html", "/**/*.html", "/**/*.css", "/**/*.js", "/profile/**").permitAll()
                 .antMatchers("/swagger-ui.html", "/swagger-resources/**", "/webjars/**", "/*/api-docs", "/druid/**").permitAll()

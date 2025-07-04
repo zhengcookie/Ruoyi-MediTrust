@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.system.mapper.AppointmentsMapper">
 
+<<<<<<< HEAD
     <resultMap type="com.ruoyi.system.domain.Appointment" id="AppointmentResult">
         <id property="id" column="id"/>
         <result property="patientName" column="patient_name"/>
@@ -48,6 +49,24 @@
     </select>
 
     <select id="selectAppointmentList" parameterType="com.ruoyi.system.domain.Appointment" resultMap="AppointmentResult">
+=======
+    <resultMap type="com.ruoyi.system.domain.Appointments" id="AppointmentResult">
+        <result property="id" column="id"/>
+        <result property="patientName" column="patient_name"/>
+        <result property="doctorName" column="doctor_name"/>
+        <result property="hospitalName" column="hospital_name"/>
+        <result property="department" column="department"/>
+        <result property="remark" column="remark"/>
+        <result property="createdAt" column="created_at"/>
+    </resultMap>
+
+    <sql id="selectAppointmentVo">
+        select id, patient_name, doctor_name, hospital_name, department, remark, created_at
+        from appointments
+    </sql>
+
+    <select id="selectAppointmentList" parameterType="com.ruoyi.system.domain.Appointments" resultMap="AppointmentResult">
+>>>>>>> ceece8c (实现多选删除功能)
         <include refid="selectAppointmentVo"/>
         <where>
             <if test="patientName != null and patientName != ''">
@@ -60,8 +79,14 @@
                 AND hospital_name like concat('%', #{hospitalName}, '%')
             </if>
             <if test="department != null and department != ''">
+<<<<<<< HEAD
                 AND department like concat('%', #{department} '%')
             </if>
+=======
+                AND department = #{department}
+            </if>
+
+>>>>>>> ceece8c (实现多选删除功能)
         </where>
     </select>
 
@@ -70,6 +95,7 @@
         where id = #{id}
     </select>
 
+<<<<<<< HEAD
     <insert id="insertAppointment" parameterType="com.ruoyi.system.domain.Appointment">
         insert into appointments (
         <if test="patientName != null and patientName != '' ">patient_name,</if>
@@ -103,6 +129,32 @@
             <if test="department != null and department != ''">department = #{department},</if>
             <if test="remark != null">remark = #{remark},</if>
             <if test="createdAt != null">created_at = #{createdAt}</if>
+=======
+    <insert id="insertAppointment" parameterType="com.ruoyi.system.domain.Appointments" useGeneratedKeys="true" keyProperty="id">
+        insert into appointments (
+        patient_name,
+        doctor_name,
+        hospital_name,
+        department,
+        <if test="remark != null">remark,</if>
+        created_at
+        ) values (
+        #{patientName},
+        #{doctorName},
+        #{hospitalName},
+        #{department},
+        <if test="remark != null">#{remark},</if>
+        sysdate()
+        )
+    </insert>
+
+    <update id="updateAppointment" parameterType="com.ruoyi.system.domain.Appointments">
+        update appointments
+        <set>
+            <if test="hospitalName != null">hospital_name = #{hospitalName},</if>
+            <if test="department != null">department = #{department},</if>
+            <if test="remark != null">remark = #{remark}</if>
+>>>>>>> ceece8c (实现多选删除功能)
         </set>
         where id = #{id}
     </update>
@@ -118,4 +170,12 @@
         </foreach>
     </delete>
 
+<<<<<<< HEAD
 </mapper>
+=======
+    <select id="checkAppointmentUnique" parameterType="com.ruoyi.system.domain.Appointments" resultMap="AppointmentResult">
+        <include refid="selectAppointmentVo"/>
+        where patient_name = #{patientName} and doctor_name = #{doctorName} limit 1
+    </select>
+</mapper>
+>>>>>>> ceece8c (实现多选删除功能)

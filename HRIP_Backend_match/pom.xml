@@ -10,7 +10,11 @@
 
     <name>ruoyi</name>
     <url>http://www.ruoyi.vip</url>
+<<<<<<< HEAD
     <description>航空系统</description>
+=======
+    <description>医疗健康问诊系统</description>
+>>>>>>> ceece8c (实现多选删除功能)
 
     <properties>
         <ruoyi.version>3.8.7</ruoyi.version>

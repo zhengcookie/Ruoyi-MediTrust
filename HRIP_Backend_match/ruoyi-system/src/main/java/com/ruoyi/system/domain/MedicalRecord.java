@@ -13,9 +13,13 @@ public class MedicalRecord implements Serializable {
 
     private Long id;
     private String patientName;
+<<<<<<< HEAD
     private String patient;
     private String doctorName;
     private String doctor;
+=======
+    private String doctorName;
+>>>>>>> ceece8c (实现多选删除功能)
     private String hospitalName;
     private String department;
     private String registrationInfo;
