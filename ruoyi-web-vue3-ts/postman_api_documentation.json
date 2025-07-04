@@ -1,0 +1,825 @@
+{
+  "info": {
+    "name": "医疗平台API",
+    "description": "云链·医问平台API接口文档",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "用户管理",
+      "item": [
+        {
+          "name": "发送验证码",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\"\n}"
+            },
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/sendCode",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "sendCode"
+              ]
+            },
+            "description": "发送验证码到指定邮箱"
+          }
+        },
+        {
+          "name": "用户注册",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "isLogin",
+                "value": "true"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"张三\",\n  \"gender\": \"男\",\n  \"age\": 30,\n  \"userType\": 1,\n  \"password\": \"password123\",\n  \"email\": \"user@example.com\"\n}"
+            },
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/register",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "register"
+              ]
+            },
+            "description": "注册新用户，userType: 0-患者, 1-医生"
+          }
+        },
+        {
+          "name": "用户登录",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "isLogin",
+                "value": "true"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/login?userName=张三&userType=0&password=password123",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "login"
+              ],
+              "query": [
+                {
+                  "key": "userName",
+                  "value": "张三"
+                },
+                {
+                  "key": "userType",
+                  "value": "0"
+                },
+                {
+                  "key": "password",
+                  "value": "password123"
+                }
+              ]
+            },
+            "description": "用户登录，userType: 0-患者, 1-医生"
+          }
+        },
+        {
+          "name": "忘记密码",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "isLogin",
+                "value": "true"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/forgetPassword?userName=张三&userType=0&password=newpassword123",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "forgetPassword"
+              ],
+              "query": [
+                {
+                  "key": "userName",
+                  "value": "张三"
+                },
+                {
+                  "key": "userType",
+                  "value": "0"
+                },
+                {
+                  "key": "password",
+                  "value": "newpassword123"
+                }
+              ]
+            },
+            "description": "重置密码，userType: 0-患者, 1-医生"
+          }
+        },
+        {
+          "name": "获取用户信息",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/system/user/profile",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "system",
+                "user",
+                "profile"
+              ]
+            },
+            "description": "获取当前登录用户详细信息，无需userId参数"
+          }
+        },
+        {
+          "name": "更新用户信息",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"name\": \"张三\",\n  \"gender\": \"男\",\n  \"age\": 31,\n  \"email\": \"user@example.com\",\n  \"avatar\": \"avatar_url\"\n}"
+            },
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/updateInfo",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "updateInfo"
+              ]
+            },
+            "description": "更新用户信息"
+          }
+        },
+        {
+          "name": "获取所有患者",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/getPatientsList",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "getPatientsList"
+              ]
+            },
+            "description": "获取所有患者列表"
+          }
+        },
+        {
+          "name": "获取所有医生姓名",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/getAllDoctorsName",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "getAllDoctorsName"
+              ]
+            },
+            "description": "获取所有医生姓名列表"
+          }
+        },
+        {
+          "name": "获取所有患者姓名",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/getAllPatientsName",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "getAllPatientsName"
+              ]
+            },
+            "description": "获取所有患者姓名列表"
+          }
+        },
+        {
+          "name": "获取所有医生",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/getDoctorsList",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "getDoctorsList"
+              ]
+            },
+            "description": "获取所有医生列表"
+          }
+        }
+      ],
+      "description": "用户相关的API接口"
+    },
+    {
+      "name": "预约管理",
+      "item": [
+        {
+          "name": "创建预约",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patientName\": \"张三\",\n  \"doctorName\": \"李四\",\n  \"hospitalName\": \"XX医院\",\n  \"department\": \"内科\",\n  \"remark\": \"预约备注\",\n  \"createdAt\": 1625097600000\n}"
+            },
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/createAppointment",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "createAppointment"
+              ]
+            },
+            "description": "创建新的预约"
+          }
+        },
+        {
+          "name": "完成预约",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/completeAppointment?appointmentId=1",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "completeAppointment"
+              ],
+              "query": [
+                {
+                  "key": "appointmentId",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "标记预约为已完成"
+          }
+        },
+        {
+          "name": "更新预约",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"hospitalName\": \"XX医院\",\n  \"department\": \"内科\",\n  \"remark\": \"更新的预约备注\",\n  \"createdAt\": 1625097600000\n}"
+            },
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/updateAppointment",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "updateAppointment"
+              ]
+            },
+            "description": "更新预约信息"
+          }
+        },
+        {
+          "name": "获取预约详情",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/getSickAppointment?appointmentId=1&userId=1",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "getSickAppointment"
+              ],
+              "query": [
+                {
+                  "key": "appointmentId",
+                  "value": "1"
+                },
+                {
+                  "key": "userId",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "获取预约详细信息"
+          }
+        },
+        {
+          "name": "获取用户预约列表",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/getAppointmentsList?userId=1",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "getAppointmentsList"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "获取用户关联的所有预约"
+          }
+        },
+        {
+          "name": "删除预约",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/deleteAppointment?appointmentId=1",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "deleteAppointment"
+              ],
+              "query": [
+                {
+                  "key": "appointmentId",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "删除预约"
+          }
+        }
+      ],
+      "description": "预约相关的API接口"
+    },
+    {
+      "name": "病历管理",
+      "item": [
+        {
+          "name": "创建病历",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patientName\": \"张三\",\n  \"doctorName\": \"李四\",\n  \"hospitalName\": \"XX医院\",\n  \"department\": \"内科\",\n  \"registrationInfo\": \"挂号信息\",\n  \"pastMedicalHistory\": \"既往病史\",\n  \"currentMedicalHistory\": \"现病史\",\n  \"createdAt\": 1625097600000\n}"
+            },
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/createMedicalRecord",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "createMedicalRecord"
+              ]
+            },
+            "description": "创建新的病历"
+          }
+        },
+        {
+          "name": "完成病历",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/completeMedicalRecord?recordId=1",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "completeMedicalRecord"
+              ],
+              "query": [
+                {
+                  "key": "recordId",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "标记病历为已完成"
+          }
+        },
+        {
+          "name": "更新病历",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"hospitalName\": \"XX医院\",\n  \"department\": \"内科\",\n  \"registrationInfo\": \"更新的挂号信息\",\n  \"pastMedicalHistory\": \"更新的既往病史\",\n  \"currentMedicalHistory\": \"更新的现病史\",\n  \"createdAt\": 1625097600000\n}"
+            },
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/updateMedicalRecord",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "updateMedicalRecord"
+              ]
+            },
+            "description": "更新病历信息"
+          }
+        },
+        {
+          "name": "删除病历",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/deleteMedicalRecord?recordId=1",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "deleteMedicalRecord"
+              ],
+              "query": [
+                {
+                  "key": "recordId",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "删除病历"
+          }
+        },
+        {
+          "name": "获取病历详情",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/getMedicalRecordByIdentityNumber?recordId=1&userId=1",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "getMedicalRecordByIdentityNumber"
+              ],
+              "query": [
+                {
+                  "key": "recordId",
+                  "value": "1"
+                },
+                {
+                  "key": "userId",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "获取病历详细信息"
+          }
+        },
+        {
+          "name": "获取用户病历列表",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/getMedicalRecordList?userId=1",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "getMedicalRecordList"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "获取用户关联的所有病历"
+          }
+        }
+      ],
+      "description": "病历相关的API接口"
+    },
+    {
+      "name": "系统信息",
+      "item": [
+        {
+          "name": "获取区块链信息",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/getBlockchainInfo",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "getBlockchainInfo"
+              ]
+            },
+            "description": "获取区块链统计信息"
+          }
+        },
+        {
+          "name": "获取用户统计信息",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://175.178.241.129/prod-api/getUserStatistics?userId=1",
+              "host": [
+                "http://175.178.241.129/prod-api"
+              ],
+              "path": [
+                "getUserStatistics"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "获取用户相关统计信息"
+          }
+        }
+      ],
+      "description": "系统信息相关的API接口"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://175.178.241.129/prod-api",
+      "type": "string",
+      "description": "API基础URL，系统实际部署地址"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string",
+      "description": "认证令牌，登录后获取"
+    }
+  ]
+} 

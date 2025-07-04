@@ -1,0 +1,23 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.config.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.vitest.json"
+    }
+  ],
+  "compilerOptions": {
+    "types": ["vite/client", "element-plus/global", "vue/ref-macros"],
+    "strict": true,
+    "moduleResolution": "node",
+    // "importsNotUsedAsValues": "error",
+    // "preserveValueImports": true,
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true
+  }
+}
