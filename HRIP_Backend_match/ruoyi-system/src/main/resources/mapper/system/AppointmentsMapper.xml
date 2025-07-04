@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.AppointmentsMapper">
+
+    <resultMap type="com.ruoyi.system.domain.Appointments" id="AppointmentResult">
+        <result property="id" column="id"/>
+        <result property="patientName" column="patient_name"/>
+        <result property="doctorName" column="doctor_name"/>
+        <result property="hospitalName" column="hospital_name"/>
+        <result property="department" column="department"/>
+        <result property="remark" column="remark"/>
+        <result property="createdAt" column="created_at"/>
+    </resultMap>
+
+    <sql id="selectAppointmentVo">
+        select id, patient_name, doctor_name, hospital_name, department, remark, created_at
+        from appointments
+    </sql>
+
+    <select id="selectAppointmentList" parameterType="com.ruoyi.system.domain.Appointments" resultMap="AppointmentResult">
+        <include refid="selectAppointmentVo"/>
+        <where>
+            <if test="patientName != null and patientName != ''">
+                AND patient_name like concat('%', #{patientName}, '%')
+            </if>
+            <if test="doctorName != null and doctorName != ''">
+                AND doctor_name like concat('%', #{doctorName}, '%')
+            </if>
+            <if test="hospitalName != null and hospitalName != ''">
+                AND hospital_name like concat('%', #{hospitalName}, '%')
+            </if>
+            <if test="department != null and department != ''">
+                AND department = #{department}
+            </if>
+
+        </where>
+    </select>
+
+    <select id="selectAppointmentById" parameterType="Long" resultMap="AppointmentResult">
+        <include refid="selectAppointmentVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertAppointment" parameterType="com.ruoyi.system.domain.Appointments" useGeneratedKeys="true" keyProperty="id">
+        insert into appointments (
+        patient_name,
+        doctor_name,
+        hospital_name,
+        department,
+        <if test="remark != null">remark,</if>
+        created_at
+        ) values (
+        #{patientName},
+        #{doctorName},
+        #{hospitalName},
+        #{department},
+        <if test="remark != null">#{remark},</if>
+        sysdate()
+        )
+    </insert>
+
+    <update id="updateAppointment" parameterType="com.ruoyi.system.domain.Appointments">
+        update appointments
+        <set>
+            <if test="hospitalName != null">hospital_name = #{hospitalName},</if>
+            <if test="department != null">department = #{department},</if>
+            <if test="remark != null">remark = #{remark}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteAppointmentById" parameterType="Long">
+        delete from appointments where id = #{id}
+    </delete>
+
+    <delete id="deleteAppointmentByIds" parameterType="Long">
+        delete from appointments where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="checkAppointmentUnique" parameterType="com.ruoyi.system.domain.Appointments" resultMap="AppointmentResult">
+        <include refid="selectAppointmentVo"/>
+        where patient_name = #{patientName} and doctor_name = #{doctorName} limit 1
+    </select>
+</mapper>

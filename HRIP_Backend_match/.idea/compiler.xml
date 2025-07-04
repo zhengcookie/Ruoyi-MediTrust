@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ruoyi-common" />
+        <module name="ruoyi-framework" />
+        <module name="ruoyi-generator" />
+        <module name="ruoyi-system" />
+        <module name="ruoyi-quartz" />
+        <module name="ruoyi-admin" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ruoyi-admin" options="" />
+      <module name="ruoyi-common" options="" />
+      <module name="ruoyi-framework" options="" />
+      <module name="ruoyi-generator" options="" />
+      <module name="ruoyi-quartz" options="" />
+      <module name="ruoyi-system" options="" />
+    </option>
+  </component>
+</project>
