@@ -8,27 +8,6 @@ import com.ruoyi.system.domain.Info;
  *
  * @author ruoyi
  */
-<<<<<<< HEAD
-public interface InfoMapper
-{
-    /**
-     * 根据条件分页查询用户信息
-     *
-     * @param user 用户信息
-     * @return 用户信息集合信息
-     */
-    public List<Info> selectUserList(Info user);
-
-    /**
-     * 根据所有用户信息
-     *
-     * @return 用户信息集合信息
-     */
-    public List<Info> selectUserAll();
-
-    /**
-     * 根据用户ID查询信息
-=======
 public interface InfoMapper {
 
     /**
@@ -41,17 +20,10 @@ public interface InfoMapper {
 
     /**
      * 通过ID查询用户信息
->>>>>>> ceece8c (实现多选删除功能)
      *
      * @param id 用户ID
      * @return 用户信息
      */
-<<<<<<< HEAD
-    public Info selectUserById(Long id);
-
-    /**
-     * 通过用户ID删除用户信息
-=======
     public Info selectInfoById(Long id);
 
     /**
@@ -80,16 +52,11 @@ public interface InfoMapper {
 
     /**
      * 删除用户信息
->>>>>>> ceece8c (实现多选删除功能)
      *
      * @param id 用户ID
      * @return 结果
      */
-<<<<<<< HEAD
-    public int deleteUserById(Long id);
-=======
     public int deleteInfoById(Long id);
->>>>>>> ceece8c (实现多选删除功能)
 
     /**
      * 批量删除用户信息
@@ -97,30 +64,9 @@ public interface InfoMapper {
      * @param ids 需要删除的用户ID
      * @return 结果
      */
-<<<<<<< HEAD
-    public int deleteUserByIds(Long[] ids);
-
-    /**
-     * 新增用户信息
-     *
-     * @param user 用户信息
-     * @return 结果
-     */
-    public int insertUser(Info user);
-
-    /**
-     * 修改用户信息
-     *
-     * @param user 用户信息
-     * @return 结果
-     */
-    public int updateUser(Info user);
-}
-=======
     public int deleteInfoByIds(Long[] ids);
 
 //    void insertImage(String fileName);
 
     void updateInfoAvatar(String fileName);
 }
->>>>>>> ceece8c (实现多选删除功能)

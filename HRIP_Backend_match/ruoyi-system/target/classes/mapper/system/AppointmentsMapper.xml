@@ -4,52 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.system.mapper.AppointmentsMapper">
 
-<<<<<<< HEAD
-    <resultMap type="com.ruoyi.system.domain.Appointment" id="AppointmentResult">
-        <id property="id" column="id"/>
-        <result property="patientName" column="patient_name"/>
-        <result property="patient" column="patient"/>
-        <result property="doctorName" column="doctor_name"/>
-        <result property="doctor" column="doctor"/>
-        <result property="hospitalName" column="hospital_name"/>
-        <result property="department" column="department"/>
-        <result property="remark" column="remark"/>
-        <result property="createdAt" column="created_at"/> <!-- 新增字段映射 -->
-    </resultMap>
-
-    <sql id="selectAppointmentVo">
-        select id, patient_name, patient, doctor_name, doctor, hospital_name, department, remark, created_at
-        from appointments
-    </sql>
-
-    <!-- 查询条件 -->
-    <sql id="sqlwhereSearch">
-        <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="patientName != null and patientName != ''">
-                and patient_name = #{patientName}
-            </if>
-            <if test="doctorName != null and doctorName != ''">
-                and doctor_name = #{doctorName}
-            </if>
-            <if test="hospitalName != null and hospitalName != ''">
-                and hospital_name = #{hospitalName}
-            </if>
-            <if test="department != null and department != ''">
-                and department = #{department}
-            </if>
-        </where>
-    </sql>
-
-    <select id="selectAppointment" parameterType="com.ruoyi.system.domain.Appointment" resultMap="AppointmentResult">
-        <include refid="selectAppointmentVo"/>
-        <include refid="sqlwhereSearch"/>
-    </select>
-
-    <select id="selectAppointmentList" parameterType="com.ruoyi.system.domain.Appointment" resultMap="AppointmentResult">
-=======
     <resultMap type="com.ruoyi.system.domain.Appointments" id="AppointmentResult">
         <result property="id" column="id"/>
         <result property="patientName" column="patient_name"/>
@@ -66,7 +20,6 @@
     </sql>
 
     <select id="selectAppointmentList" parameterType="com.ruoyi.system.domain.Appointments" resultMap="AppointmentResult">
->>>>>>> ceece8c (实现多选删除功能)
         <include refid="selectAppointmentVo"/>
         <where>
             <if test="patientName != null and patientName != ''">
@@ -79,14 +32,9 @@
                 AND hospital_name like concat('%', #{hospitalName}, '%')
             </if>
             <if test="department != null and department != ''">
-<<<<<<< HEAD
-                AND department like concat('%', #{department} '%')
-            </if>
-=======
                 AND department = #{department}
             </if>
 
->>>>>>> ceece8c (实现多选删除功能)
         </where>
     </select>
 
@@ -95,41 +43,6 @@
         where id = #{id}
     </select>
 
-<<<<<<< HEAD
-    <insert id="insertAppointment" parameterType="com.ruoyi.system.domain.Appointment">
-        insert into appointments (
-        <if test="patientName != null and patientName != '' ">patient_name,</if>
-        <if test="patient != null and patient != '' ">patient,</if>
-        <if test="doctorName != null and doctorName != '' ">doctor_name,</if>
-        <if test="doctor != null and doctor != '' ">doctor,</if>
-        <if test="hospitalName != null and hospitalName != '' ">hospital_name,</if>
-        <if test="department != null and department != '' ">department,</if>
-        <if test="remark != null and remark != '' ">remark,</if> <!-- 注意这里的逗号 -->
-        created_at <!-- 新增字段 -->
-        ) values (
-        <if test="patientName != null and patientName != '' ">#{patientName},</if>
-        <if test="patient != null and patient != '' ">#{patient},</if>
-        <if test="doctorName != null and doctorName != '' ">#{doctorName},</if>
-        <if test="doctor != null and doctor != '' ">#{doctor},</if>
-        <if test="hospitalName != null and hospitalName != '' ">#{hospitalName},</if>
-        <if test="department != null and department != '' ">#{department},</if>
-        <if test="remark != null and remark != '' ">#{remark},</if> <!-- 注意这里的逗号 -->
-        CURRENT_TIMESTAMP <!-- 新增字段值 -->
-        )
-    </insert>
-
-    <update id="updateAppointment" parameterType="com.ruoyi.system.domain.Appointment">
-        update appointments
-        <set>
-            <if test="patientName != null and patientName != ''">patient_name = #{patientName},</if>
-            <if test="patient != null and patient != ''">patient = #{patient},</if>
-            <if test="doctorName != null and doctorName != ''">doctor_name = #{doctorName},</if>
-            <if test="doctor != null and doctor != ''">doctor = #{doctor},</if>
-            <if test="hospitalName != null and hospitalName != ''">hospital_name = #{hospitalName},</if>
-            <if test="department != null and department != ''">department = #{department},</if>
-            <if test="remark != null">remark = #{remark},</if>
-            <if test="createdAt != null">created_at = #{createdAt}</if>
-=======
     <insert id="insertAppointment" parameterType="com.ruoyi.system.domain.Appointments" useGeneratedKeys="true" keyProperty="id">
         insert into appointments (
         patient_name,
@@ -154,7 +67,6 @@
             <if test="hospitalName != null">hospital_name = #{hospitalName},</if>
             <if test="department != null">department = #{department},</if>
             <if test="remark != null">remark = #{remark}</if>
->>>>>>> ceece8c (实现多选删除功能)
         </set>
         where id = #{id}
     </update>
@@ -170,12 +82,8 @@
         </foreach>
     </delete>
 
-<<<<<<< HEAD
-</mapper>
-=======
     <select id="checkAppointmentUnique" parameterType="com.ruoyi.system.domain.Appointments" resultMap="AppointmentResult">
         <include refid="selectAppointmentVo"/>
         where patient_name = #{patientName} and doctor_name = #{doctorName} limit 1
     </select>
 </mapper>
->>>>>>> ceece8c (实现多选删除功能)

@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-<<<<<<< HEAD
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ruoyi.system.mapper.MedicalRecordMapper">
-
-    <resultMap type="com.ruoyi.system.domain.MedicalRecord" id="MedicalRecordResult">
-        <id property="id" column="id"/>
-        <result property="patientName" column="patient_name"/>
-        <result property="patient" column="patient"/>
-        <result property="doctorName" column="doctor_name"/>
-        <result property="doctor" column="doctor"/>
-=======
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.system.mapper.MedicalRecordMapper">
@@ -21,7 +9,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="patientName" column="patient_name"/>
 
         <result property="doctorName" column="doctor_name"/>
->>>>>>> ceece8c (实现多选删除功能)
         <result property="hospitalName" column="hospital_name"/>
         <result property="department" column="department"/>
         <result property="registrationInfo" column="registration_info"/>
@@ -29,55 +16,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="currentMedicalHistory" column="current_medical_history"/>
         <result property="createdAt" column="created_at"/>
     </resultMap>
-<<<<<<< HEAD
-
-    <sql id="selectMedicalRecordVo">
-        select id, patient_name, patient, doctor_name, doctor, hospital_name, department, registration_info, past_medical_history, current_medical_history, created_at
-        from medical_records
-    </sql>
-
-    <!-- 查询条件 -->
-    <sql id="sqlwhereSearch">
-        <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="patientName != null and patientName != ''">
-                and patient_name = #{patientName}
-            </if>
-            <if test="doctorName != null and doctorName != ''">
-                and doctor_name = #{doctorName}
-            </if>
-            <if test="hospitalName != null and hospitalName != ''">
-                and hospital_name = #{hospitalName}
-            </if>
-            <if test="department != null and department != ''">
-                and department = #{department}
-            </if>
-        </where>
-    </sql>
-
-    <select id="selectMedicalRecordList" parameterType="com.ruoyi.system.domain.MedicalRecord" resultMap="MedicalRecordResult">
-        <include refid="selectMedicalRecordVo"/>
-        <include refid="sqlwhereSearch"/>
-    </select>
-
-    <select id="selectMedicalRecordAll" resultMap="MedicalRecordResult">
-        <include refid="selectMedicalRecordVo"/>
-    </select>
-
-    <select id="selectMedicalRecordById" parameterType="Long" resultMap="MedicalRecordResult">
-        <include refid="selectMedicalRecordVo"/>
-        where id = #{id}
-    </select>
-
-    <delete id="deleteMedicalRecordById" parameterType="Long">
-        delete from medical_records where id = #{id}
-    </delete>
-
-    <delete id="deleteMedicalRecordByIds" parameterType="Long">
-        delete from medical_records where id in
-=======
     
     <sql id="selectMedicalRecordVo">
         select id, patient_name,  doctor_name, hospital_name, department,
@@ -162,58 +100,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <delete id="deleteMedicalRecordByIds" parameterType="Integer">
         delete from medical_record where id in
->>>>>>> ceece8c (实现多选删除功能)
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>
     </delete>
-<<<<<<< HEAD
-
-    <insert id="insertMedicalRecord" parameterType="com.ruoyi.system.domain.MedicalRecord">
-        insert into medical_records (
-        <if test="patientName != null and patientName != '' ">patient_name,</if>
-        <if test="patient != null and patient != '' ">patient,</if>
-        <if test="doctorName != null and doctorName != '' ">doctor_name,</if>
-        <if test="doctor != null and doctor != '' ">doctor,</if>
-        <if test="hospitalName != null and hospitalName != '' ">hospital_name,</if>
-        <if test="department != null and department != '' ">department,</if>
-        <if test="registrationInfo != null and registrationInfo != '' ">registration_info,</if>
-        <if test="pastMedicalHistory != null and pastMedicalHistory != '' ">past_medical_history,</if>
-        <if test="currentMedicalHistory != null and currentMedicalHistory != '' ">current_medical_history,</if>
-        <if test="createdAt != null ">created_at</if>
-        ) values (
-        <if test="patientName != null and patientName != '' ">#{patientName},</if>
-        <if test="patient != null and patient != '' ">#{patient},</if>
-        <if test="doctorName != null and doctorName != '' ">#{doctorName},</if>
-        <if test="doctor != null and doctor != '' ">#{doctor},</if>
-        <if test="hospitalName != null and hospitalName != '' ">#{hospitalName},</if>
-        <if test="department != null and department != '' ">#{department},</if>
-        <if test="registrationInfo != null and registrationInfo != '' ">#{registrationInfo},</if>
-        <if test="pastMedicalHistory != null and pastMedicalHistory != '' ">#{pastMedicalHistory},</if>
-        <if test="currentMedicalHistory != null and currentMedicalHistory != '' ">#{currentMedicalHistory},</if>
-        <if test="createdAt != null ">#{createdAt}</if>
-        )
-    </insert>
-
-    <update id="updateMedicalRecord" parameterType="com.ruoyi.system.domain.MedicalRecord">
-        update medical_records
-        <set>
-            <if test="patientName != null and patientName != ''">patient_name = #{patientName},</if>
-            <if test="patient != null and patient != ''">patient = #{patient},</if>
-            <if test="doctorName != null and doctorName != ''">doctor_name = #{doctorName},</if>
-            <if test="doctor != null and doctor != ''">doctor = #{doctor},</if>
-            <if test="hospitalName != null and hospitalName != ''">hospital_name = #{hospitalName},</if>
-            <if test="department != null and department != ''">department = #{department},</if>
-            <if test="registrationInfo != null and registrationInfo != ''">registration_info = #{registrationInfo},</if>
-            <if test="pastMedicalHistory != null and pastMedicalHistory != ''">past_medical_history = #{pastMedicalHistory},</if>
-            <if test="currentMedicalHistory != null and currentMedicalHistory != ''">current_medical_history = #{currentMedicalHistory},</if>
-            <if test="createdAt != null">created_at = #{createdAt}</if>
-        </set>
-        where id = #{id}
-    </update>
-
-</mapper>
-=======
     
 </mapper>
->>>>>>> ceece8c (实现多选删除功能)

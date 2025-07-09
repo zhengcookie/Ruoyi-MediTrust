@@ -77,10 +77,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="configType != null and configType != '' ">config_type,</if>
 			<if test="createBy != null and createBy != ''">create_by,</if>
 			<if test="remark != null and remark != ''">remark,</if>
-<<<<<<< HEAD
-=======
 
->>>>>>> ceece8c (实现多选删除功能)
  			create_time
         )values(
 			<if test="configName != null and configName != ''">#{configName},</if>
