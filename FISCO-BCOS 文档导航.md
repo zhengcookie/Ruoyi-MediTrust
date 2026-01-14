@@ -30,11 +30,11 @@
 - 快速开始（AIR 安装）  
   [https://fisco-bcos-doc.readthedocs.io/zh-cn/latest/docs/quick_start/air_installation.html](https://fisco-bcos-doc.readthedocs.io/zh-cn/latest/docs/quick_start/air_installation.html)  
 - 教程入口  
-  `https://fisco-bcos-doc.readthedocs.io/zh-cn/latest/docs/tutorial/air/index.html` [(fisco-bcos-doc.readthedocs.io in Bing)](https://www.bing.com/search?q="https%3A%2F%2Ffisco-bcos-doc.readthedocs.io%2Fzh-cn%2Flatest%2Fdocs%2Ftutorial%2Fair%2Findex.html")
+  [https://fisco-bcos-doc.readthedocs.io/zh-cn/latest/docs/tutorial/air/index.html][(fisco-bcos-doc.readthedocs.io in Bing)](https://www.bing.com/search?q="https%3A%2F%2Ffisco-bcos-doc.readthedocs.io%2Fzh-cn%2Flatest%2Fdocs%2Ftutorial%2Fair%2Findex.html")
 
 ### 🏗️ 搭建第一个区块链网络  
 - build_chain 工具搭建  
-  `https://fisco-bcos-doc.readthedocs.io/zh-cn/latest/docs/operation_and_maintenance/build_chain.html` [(fisco-bcos-doc.readthedocs.io in Bing)](https://www.bing.com/search?q="https%3A%2F%2Ffisco-bcos-doc.readthedocs.io%2Fzh-cn%2Flatest%2Fdocs%2Foperation_and_maintenance%2Fbuild_chain.html")
+  [https://fisco-bcos-doc.readthedocs.io/zh-cn/latest/docs/operation_and_maintenance/build_chain.html][(fisco-bcos-doc.readthedocs.io in Bing)](https://www.bing.com/search?q="https%3A%2F%2Ffisco-bcos-doc.readthedocs.io%2Fzh-cn%2Flatest%2Fdocs%2Foperation_and_maintenance%2Fbuild_chain.html")
 
 ### 🧰 WeBASE（3.0）  
 - WeBASE 一键部署区块链  
