@@ -8,7 +8,7 @@
 
 ### 📘 基础文档  
 - FISCO-BCOS 2.0 文档（旧版入口）  
-  `https://fisco-bcos-doc-chinese.readthedocs.io/zh-cn/release-2.0.0/docs/manual/index.html`
+  [https://fisco-bcos-doc-chinese.readthedocs.io/zh-cn/release-2.0.0/docs/manual/index.html](https://fisco-bcos-doc-chinese.readthedocs.io/zh-cn/release-2.0.0/docs/manual/index.html)
 
 ### 🏗️ 搭建第一个区块链网络  
 - 官方安装指南  
